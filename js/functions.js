@@ -17,8 +17,8 @@ const randomizeNumbers = () => {
 }
 
 const updateScore = () => {
-    document.querySelector('#correct').textContent = correctCount;
-    document.querySelector('#incorrect').textContent = incorrectCount;
+    document.querySelector('#correctCount').textContent = correctCount;
+    document.querySelector('#incorrectCount').textContent = incorrectCount;
 }
 
 addEventListener("DOMContentLoaded", () => {
@@ -29,11 +29,14 @@ document.querySelector('button').addEventListener('click', () => {
     const answer = Number(document.querySelector('input').value)
     const correctAnswer = rand_num1 + rand_num2
     if (answer === correctAnswer) {
-        alert('Correct!')
+        alert('Correct!');
+        correctCount++;
     } else {
-        alert('Incorrect!')
+        alert('Incorrect!');
+        incorrectCount++;
     }
 
+    updateScore();
     randomizeNumbers()
     document.querySelector('input').value=''
 })
